@@ -89,6 +89,15 @@ var finances = [
 
 var netTotalOfProfitsAndLosses = 0;
 var changesInProfitsAndLosses = [0];
+var totalOfProfitChanges = 0;
+var averageOfProfitChanges;
+var averageRoundedNumber;
+
+var greatestIncInProfits;
+var greatestDecInProfits;
+
+var greatestIncIndex = 0;
+var greatestDecIndex = 0;
 
 console.log("Total Months: "+finances.length);
 
@@ -106,6 +115,34 @@ for(var i=0; i<finances.length; i++) {
 console.log("Net Total of Profits and Loses: $" + netTotalOfProfitsAndLosses);
 
 for(var x=0; x<changesInProfitsAndLosses.length; x++) {
-    console.log(changesInProfitsAndLosses[x]);
+
+    totalOfProfitChanges = totalOfProfitChanges + changesInProfitsAndLosses[x][1];
+
+    if(x == 0){
+
+        greatestIncInProfits = changesInProfitsAndLosses[x][1];
+        greatestDecInProfits = changesInProfitsAndLosses[x][1];
+
+    } else if(changesInProfitsAndLosses[x][1] > greatestIncInProfits){
+
+        greatestIncInProfits = changesInProfitsAndLosses[x][1];
+        greatestIncIndex = x;
+
+    } else if(changesInProfitsAndLosses[x][1] < greatestDecInProfits){
+
+        greatestDecInProfits = changesInProfitsAndLosses[x][1];
+        greatestDecIndex = x;
+
+    }
+
+    // console.log(changesInProfitsAndLosses[x]);
 }
-console.log("length of new array: " + changesInProfitsAndLosses.length);
+
+averageOfProfitChanges = totalOfProfitChanges / changesInProfitsAndLosses.length;
+averageRoundedNumber = Math.round(averageOfProfitChanges * 100) / 100;
+console.log("Average of changes in profits and losses: " + averageRoundedNumber);
+
+console.log("Greatest Increase in Profits: " + changesInProfitsAndLosses[greatestIncIndex]);
+console.log("Greatest Decrease in Profits: " + changesInProfitsAndLosses[greatestDecIndex]);
+
+// console.log("length of new array: " + changesInProfitsAndLosses.length);
