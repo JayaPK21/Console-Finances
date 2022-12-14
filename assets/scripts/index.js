@@ -86,3 +86,26 @@ var finances = [
 ['Jan-2017', 138230],
 ['Feb-2017', 671099]
 ];
+
+var netTotalOfProfitsAndLosses = 0;
+var changesInProfitsAndLosses = [0];
+
+console.log("Total Months: "+finances.length);
+
+for(var i=0; i<finances.length; i++) {
+    
+    netTotalOfProfitsAndLosses = netTotalOfProfitsAndLosses + finances[i][1];
+
+    if(finances[i+1] != undefined) {
+        changeValue = finances[i+1][1] - finances[i][1];
+        changesInProfitsAndLosses[i] = [finances[i+1][0], changeValue];
+    }
+    
+}
+
+console.log("Net Total of Profits and Loses: $" + netTotalOfProfitsAndLosses);
+
+for(var x=0; x<changesInProfitsAndLosses.length; x++) {
+    console.log(changesInProfitsAndLosses[x]);
+}
+console.log("length of new array: " + changesInProfitsAndLosses.length);
