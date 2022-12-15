@@ -87,22 +87,31 @@ var finances = [
 ['Feb-2017', 671099]
 ];
 
+// Stores the net total of all profits and lossed during the entire period.
 var netTotalOfProfitsAndLosses = 0;
+
+// A new array created to store the changes in profits/losses for each month.
 var changesInProfitsAndLosses = [0];
+
+// Stores the total of profit changes for the entire period.
 var totalOfProfitChanges = 0;
 var averageOfProfitChanges;
 var averageRoundedNumber;
 
+// These values contain the greatest increase/decrease in profits for the entire period.
 var greatestIncInProfits;
 var greatestDecInProfits;
 
+// Index of the changesInProfitsAndLosses array that represents the date and value for the greatest increase/decrease in profits.
 var greatestIncIndex = 0;
 var greatestDecIndex = 0;
 
 for(var i=0; i<finances.length; i++) {
     
+    // Getting the sum of all the profits and losses for the entire period.
     netTotalOfProfitsAndLosses = netTotalOfProfitsAndLosses + finances[i][1];
 
+    // Creating another array to store the changes in Profits/Losses for each month, during the entire period.
     if(finances[i+1] != undefined) {
         changeValue = finances[i+1][1] - finances[i][1];
         changesInProfitsAndLosses[i] = [finances[i+1][0], changeValue];
@@ -112,29 +121,39 @@ for(var i=0; i<finances.length; i++) {
 
 for(var x=0; x<changesInProfitsAndLosses.length; x++) {
 
+    // Getting the sum of all the changes in Profits/Losses for the entire period.
     totalOfProfitChanges = totalOfProfitChanges + changesInProfitsAndLosses[x][1];
 
     if(x == 0){
 
+        // Initiallizing the greatest increase/decrease in profits to the first month.
         greatestIncInProfits = changesInProfitsAndLosses[x][1];
         greatestDecInProfits = changesInProfitsAndLosses[x][1];
 
     } else if(changesInProfitsAndLosses[x][1] > greatestIncInProfits){
 
+        // If the change in profit is greater than the stored value it is replaced with the current value. 
         greatestIncInProfits = changesInProfitsAndLosses[x][1];
+        
+        // Storing the index for the greatest increase in profits.
         greatestIncIndex = x;
 
     } else if(changesInProfitsAndLosses[x][1] < greatestDecInProfits){
 
+        // If the change in profit is less than the stored value it is replaced with the current value.
         greatestDecInProfits = changesInProfitsAndLosses[x][1];
+
+        // Storing the index for the greatest decrease in profits.
         greatestDecIndex = x;
 
     }
 
 }
 
+// Average of the profit changes for the entire period and rounding off the resulting value.
 averageOfProfitChanges = totalOfProfitChanges / changesInProfitsAndLosses.length;
 averageRoundedNumber = Math.round(averageOfProfitChanges * 100) / 100;
 
+// All the above calculated results are printed to the console to display the financial analysis report.
 console.log(`Financial Analysis\n---------------------------\n\nTotal Months: ${finances.length}\n\nNet Total of Profits and Loses: \$${netTotalOfProfitsAndLosses}\n\nAverage change: \$${averageRoundedNumber}\n\nGreatest Increase in Profits: ${changesInProfitsAndLosses[greatestIncIndex][0]} (\$${changesInProfitsAndLosses[greatestIncIndex][1]})\n\nGreatest Decrease in Profits: ${changesInProfitsAndLosses[greatestDecIndex][0]} (\$${changesInProfitsAndLosses[greatestDecIndex][1]})`
 );
