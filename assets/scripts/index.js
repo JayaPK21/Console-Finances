@@ -155,5 +155,18 @@ averageOfProfitChanges = totalOfProfitChanges / changesInProfitsAndLosses.length
 averageRoundedNumber = Math.round(averageOfProfitChanges * 100) / 100;
 
 // All the above calculated results are printed to the console to display the financial analysis report.
-console.log(`Financial Analysis\n---------------------------\n\nTotal Months: ${finances.length}\n\nNet Total of Profits and Loses: \$${netTotalOfProfitsAndLosses}\n\nAverage change: \$${averageRoundedNumber}\n\nGreatest Increase in Profits: ${changesInProfitsAndLosses[greatestIncIndex][0]} (\$${changesInProfitsAndLosses[greatestIncIndex][1]})\n\nGreatest Decrease in Profits: ${changesInProfitsAndLosses[greatestDecIndex][0]} (\$${changesInProfitsAndLosses[greatestDecIndex][1]})`
-);
+console.log(`
+Financial Analysis
+---------------------------
+
+Total Months: ${finances.length}
+
+Net Total of Profits and Loses: \$${netTotalOfProfitsAndLosses}
+
+Average change: \$${averageRoundedNumber}
+
+Greatest Increase in Profits: ${changesInProfitsAndLosses[greatestIncIndex][0]} (\$${changesInProfitsAndLosses[greatestIncIndex][1]})
+
+Greatest Decrease in Profits: ${changesInProfitsAndLosses[greatestDecIndex][0]} (\$${changesInProfitsAndLosses[greatestDecIndex][1]})
+
+`);
