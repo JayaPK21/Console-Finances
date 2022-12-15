@@ -1,0 +1,19 @@
+h1 {
+    text-align:center;
+    background-color: blue;
+    color: white;
+    padding: 10px 5px;
+    margin: 0;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #bbdefb;
+}
+
+.info ul {
+    font-size: large;
+    line-height: 1.5;
+}
