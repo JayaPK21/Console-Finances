@@ -99,8 +99,6 @@ var greatestDecInProfits;
 var greatestIncIndex = 0;
 var greatestDecIndex = 0;
 
-console.log("Total Months: "+finances.length);
-
 for(var i=0; i<finances.length; i++) {
     
     netTotalOfProfitsAndLosses = netTotalOfProfitsAndLosses + finances[i][1];
@@ -111,8 +109,6 @@ for(var i=0; i<finances.length; i++) {
     }
     
 }
-
-console.log("Net Total of Profits and Loses: $" + netTotalOfProfitsAndLosses);
 
 for(var x=0; x<changesInProfitsAndLosses.length; x++) {
 
@@ -135,14 +131,10 @@ for(var x=0; x<changesInProfitsAndLosses.length; x++) {
 
     }
 
-    // console.log(changesInProfitsAndLosses[x]);
 }
 
 averageOfProfitChanges = totalOfProfitChanges / changesInProfitsAndLosses.length;
 averageRoundedNumber = Math.round(averageOfProfitChanges * 100) / 100;
-console.log("Average of changes in profits and losses: " + averageRoundedNumber);
 
-console.log("Greatest Increase in Profits: " + changesInProfitsAndLosses[greatestIncIndex]);
-console.log("Greatest Decrease in Profits: " + changesInProfitsAndLosses[greatestDecIndex]);
-
-// console.log("length of new array: " + changesInProfitsAndLosses.length);
+console.log(`Financial Analysis\n---------------------------\n\nTotal Months: ${finances.length}\n\nNet Total of Profits and Loses: \$${netTotalOfProfitsAndLosses}\n\nAverage change: \$${averageRoundedNumber}\n\nGreatest Increase in Profits: ${changesInProfitsAndLosses[greatestIncIndex][0]} (\$${changesInProfitsAndLosses[greatestIncIndex][1]})\n\nGreatest Decrease in Profits: ${changesInProfitsAndLosses[greatestDecIndex][0]} (\$${changesInProfitsAndLosses[greatestDecIndex][1]})`
+);
